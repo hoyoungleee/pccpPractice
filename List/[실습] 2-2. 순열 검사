@@ -1,0 +1,18 @@
+import java.util.*;
+class Solution {
+    public boolean solution(int[] arr) {
+        boolean answer = true;
+        int n = arr.length;
+        HashSet<Integer> seen = new HashSet<>();
+
+        for (int num : arr) {
+            // 1부터 n 범위 벗어나거나 중복이면 false
+            if (num < 1 || num > n || !seen.add(num)) {
+                answer = false;
+                break;
+            }
+        }
+
+        return answer;
+    }
+}

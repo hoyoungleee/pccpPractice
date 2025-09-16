@@ -1,0 +1,22 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(long n) {
+        List<Integer> list = new ArrayList<>();
+        
+        while (n != 0) { 
+            int num = (int)(n % 10); // 끝자리를 자르고
+            list.add(num);           // 리스트에 추가 (뒤집은 순서 자동)
+            n /= 10;                 // 자리수 하나 줄이기
+        }
+        
+        int[] answer = new int[list.size()];
+        
+        // 그대로 복사만 하면 됨 (list는 이미 뒤집힌 순서니까)
+        for (int i = 0; i < list.size(); i++) {
+            answer[i] = list.get(i);
+        }
+        
+        return answer;
+    }
+}
