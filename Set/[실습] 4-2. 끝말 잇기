@@ -1,0 +1,33 @@
+import java.util.*;
+
+class Solution {
+    public boolean solution(String[] words) {
+        boolean answer = true;
+        
+        Set<String> strs = new HashSet<>();
+        
+        
+        for(String word : words){
+
+            //중복제거 로직
+            if(!strs.add(word)){
+                return false;
+            }
+        }
+        //글자 이어지기 판단
+        int wordLen = words[0].length();
+        char lastChar = words[0].charAt(wordLen-1);
+        for(int i = 1; i<words.length; i++){
+            if(lastChar == words[i].charAt(0)){
+                wordLen = words[i].length();
+                lastChar = words[i].charAt(wordLen-1);
+            }else{
+                return false;
+            }
+        }
+        
+        
+
+        return answer;
+    }
+}

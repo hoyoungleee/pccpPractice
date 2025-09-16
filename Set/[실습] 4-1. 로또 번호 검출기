@@ -1,0 +1,21 @@
+import java.util.*;
+
+class Solution {
+    public boolean solution(int[] lotto) {
+        
+        boolean answer = true;
+        
+        Set<Integer> checker = new HashSet<>();
+        for(int num : lotto){
+            checker.add(num);    
+        }
+        
+        
+        if(checker.size() != lotto.length){
+            answer = false;
+        }
+        
+        
+        return answer;
+    }
+}
