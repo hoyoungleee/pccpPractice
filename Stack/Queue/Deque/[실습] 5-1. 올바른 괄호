@@ -1,0 +1,38 @@
+
+class Solution {
+    boolean solution(String s) {
+        boolean answer = true;
+        
+        //갯수 안맞는 괄호 거절 처리
+        if((s.length()%2)>0){
+            return false;
+        }
+        
+        //여는 괄호가 처음에 나오지 않으면 거절
+        if(s.charAt(0) != '('){
+            return false;
+        }
+        //열고 닫음을 표현하기 위한 숫자 0이면 닫힌 거임.
+        int oc = 0;
+
+        for(int i =0; i<s.length(); i++){
+            char ch = s.charAt(i);
+            if(ch == '('){
+                oc += 1;
+            }else{
+                oc -= 1;
+            }
+            //도중에 -1 나오면 괄호 꼬인거라 중간에 차단
+            if(oc < 0){
+                return false;
+            }
+        }
+        //다 돌고도 0이 아니라면 차단
+        if(oc != 0){
+            return false;
+        }
+        
+        
+        return answer;
+    }
+}
