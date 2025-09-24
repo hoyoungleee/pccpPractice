@@ -1,0 +1,45 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] progresses, int[] speeds) {
+        int[] answer = {};
+        
+        //변경 삭제가 빈번하여 LinkedList
+        Deque<Integer> days = new LinkedList<>();
+        
+        
+        for(int i =0; i<progresses.length; i++){
+            
+            int left = 100 - progresses[i];
+            
+            int day = left/speeds[i];
+            if(left%speeds[i]>0){
+                day += 1;
+            }
+            days.offer(day);
+        }
+        int time = 0;
+        int cnt = 0;
+        List<Integer> temp = new ArrayList<>();
+        while(!days.isEmpty()){
+            int left = days.peekFirst();
+
+            if(left <= time){
+                cnt += 1;
+                days.removeFirst();
+            }else if(cnt>0){
+                temp.add(cnt);
+                cnt = 0;
+            }else{
+                time += 1;
+            }
+        }
+        
+        //큐가 다 비어서 나왔을때 마지막 계산 담기
+        temp.add(cnt);
+
+        answer = temp.stream().mapToInt(i -> i).toArray();
+        
+        return answer;
+    }
+}

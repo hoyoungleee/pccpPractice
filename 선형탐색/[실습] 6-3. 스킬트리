@@ -1,0 +1,32 @@
+class Solution {
+    public int solution(String skill, String[] skill_trees) {
+        int answer = skill_trees.length;
+        
+        int skillLen = skill.length();
+        
+        
+        for(String s : skill_trees ){
+            boolean[] check  = new boolean[skill.length()];
+        
+            
+            for(char c : s.toCharArray()){
+                if(!skill.contains(String.valueOf(c))){
+                    continue;
+                }
+                int index = skill.indexOf(String.valueOf(c));
+                if(index == 0){
+                    check[0] = true;
+                }else if(!check[index-1]){
+                    answer -= 1;
+                    break;
+                }else{
+                    check[index] = true;
+                }
+            }
+            
+        }
+        
+        
+        return answer;
+    }
+}
